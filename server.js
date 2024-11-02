@@ -12,11 +12,6 @@ app.use(express.json())
 
 
 
-
-
-
-
-
 mongoose.connect(process.env.APP_MONGO_CON_SRT)
     .then((connection) =>{
         if(process.env.APP_ENV === "development")
