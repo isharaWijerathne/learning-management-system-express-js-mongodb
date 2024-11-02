@@ -1,12 +1,12 @@
 
 //email calidator for mongoose
-export function emaliValidator(value)
+exports.emaliValidator = function emaliValidator(value)
 {
-    return String(value).includes('@') && String(value).includes(".com")
+    return value.includes('@') && value.includes(".com")
 }
 
 // password validator
-export function passwordValidator(value)
+exports.passwordValidator = function passwordValidator(value)
 {
     //symbles for regular expression
     const symble = /[^a-zA-Z0-9]/ ;
@@ -17,5 +17,5 @@ export function passwordValidator(value)
     //max password length
     const length = 8
 
-    return String(value).length > length && symble.test(value)  && upperCase.test(value)
+    return value.length > length && symble.test(value)  && upperCase.test(value)
 }

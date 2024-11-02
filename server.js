@@ -10,6 +10,12 @@ dotenv.config({
 
 app.use(express.json())
 
+const teacerRouter = require('./routes/teacherRoutes')
+
+
+app.use("/api/v1/tech",teacerRouter)
+
+
 
 
 mongoose.connect(process.env.APP_MONGO_CON_SRT)
