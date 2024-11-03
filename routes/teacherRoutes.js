@@ -4,7 +4,7 @@ const router = express.Router();
 const teacherController = require('../controllers/teacherController')
 
 router.route("/")
-    .post(teacherController.testfunc)
+    .get(teacherController.test)
 
 
 

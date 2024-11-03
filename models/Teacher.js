@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { emaliValidator, passwordValidator } = require('../validations/mongooseCustomValidator');
+const { emaliValidator, passwordValidator } = require('../utils/validations/mongooseCustomValidator');
 
 const teacherSchema = new mongoose.Schema({
     teacher_id : {
