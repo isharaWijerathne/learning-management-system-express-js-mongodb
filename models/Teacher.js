@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt')
 const { emaliValidator, passwordValidator } = require('../utils/validations/mongooseCustomValidator');
 
 const teacherSchema = new mongoose.Schema({
@@ -43,9 +44,40 @@ const teacherSchema = new mongoose.Schema({
     }
     ,
     token : {
-        type : String
+        type : String,
+        default : 'xxxxxxx'
     }
 },{collection : 'teacher'});
+
+
+teacherSchema.pre('save', function(next) {
+    var teaher = this;
+
+    // only hash the password if it has been modified (or is new)
+    if (!teaher.isModified('password')) return next();
+
+    // generate a salt
+    const saltRounds = parseInt(process.env.SALT_WORK_FACTOR, 10) || 10;
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        if (err) return next(err);
+
+        // hash the password using our new salt
+        bcrypt.hash(teaher.password, salt, function(err, hash) {
+            if (err) return next(err);
+            // override the cleartext password with the hashed one
+            teaher.password = hash;
+            next();
+        });
+    });
+});
+     
+teacherSchema.methods.comparePassword = function(candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
+};
+     
 
 const Teacher = mongoose.model("Teacher",teacherSchema);
 module.exports = Teacher;

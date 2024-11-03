@@ -1,0 +1,31 @@
+//Create Teacher -> req
+[
+    {
+        "first_name": "Test teacher",
+        "last_name": "Teas Name",
+        "email": "ishara@test.com",
+        "password": "1234567Pkmn@",
+        "teacher_subject": "Maths",
+    }
+]
+
+//Edit Teacher -->
+[
+    {
+        "teacher_id" : "";
+        "first_name": "Test teacher",
+        "last_name": "Teas Name",
+        "email": "qwqw3sadasasd6ads@tsdsdest.com",
+        "teacher_subject": "Maths"
+    }
+]
+
+//Change Teahcer Password -->
+[
+    {
+       "teacher_id" : "TEC-00007",
+        "email": "ishara@test.com",
+        "password": "85698569D#",
+        "password_new" : "85698569D#%"
+    }
+]  

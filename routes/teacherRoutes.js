@@ -3,8 +3,26 @@ const router = express.Router();
 
 const teacherController = require('../controllers/teacherController')
 
+
 router.route("/")
-    .get(teacherController.test)
+    .post(teacherController.createTeacher)
+
+
+router.route("/edit")
+    .post(teacherController.editTeacher);    
+
+
+router.route("/active/:teacherId")
+    .get(teacherController.activeTeacher);
+
+    
+router.route("/deactive/:teacherId")
+    .get(teacherController.deactiveTeacher);
+
+router.route("/passwordChange")
+    .post(teacherController.passwordChange)
+
+
 
 
 

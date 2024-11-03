@@ -29,10 +29,24 @@ app.use((error,req,res,next)=>{
     error.statusCode = error.statusCode || 500;
     error.status = error.status || 'error';
 
-    res.status(error.statusCode).json({
-        status : error.statusCode,
-        message : error.message
-    })
+
+    if(process.env.APP_ENV === "development"){
+            res.status(error.statusCode).json({
+                status : error.statusCode,
+                message : error.message,
+                stackTrace : error.stack,
+                error : error
+            })
+    }
+
+    if(process.env.APP_ENV === "production"){
+        res.status(error.statusCode).json({
+            status : error.statusCode,
+            message : error.message
+        })
+    }
+
+   
 });
 
 
@@ -55,4 +69,16 @@ app.listen(process.env.APP_PORT,() =>{
             console.log("server is running on port " + process.env.APP_PORT );  
         }
     
+})
+
+
+
+//unhandledRejections
+process.on('unhandledRejection',(err) => {
+    
+    console.log(err.name, err.message);
+    
+
+    //shutdownApplication
+    process.exit(1);
 })

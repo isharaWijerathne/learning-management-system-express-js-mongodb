@@ -9,4 +9,5 @@ exports.nextIDGenarator = function(lastUsedID,idCode)
     const numberafterPadLeft = String(nextAvailableNumber).padStart(5,'0');
     return idCode + '-' + numberafterPadLeft;
 
+    
 }
