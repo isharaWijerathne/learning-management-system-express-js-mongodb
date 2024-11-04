@@ -11,10 +11,12 @@ dotenv.config({
 app.use(express.json())
 
 const teacerRouter = require('./routes/teacherRoutes');
+const studentRouter = require('./routes/studentRoutes')
 const CustomError = require('./utils/errorHandalers/customeErrHander');
 
 
 app.use("/api/v1/tech",teacerRouter)
+app.use("/api/v1/std",studentRouter)
 
 
 app.all('*',(req,res,next) =>{

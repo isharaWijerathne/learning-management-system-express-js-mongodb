@@ -29,3 +29,26 @@
         "password_new" : "85698569D#%"
     }
 ]  
+
+//Create Student --->
+[
+    {
+        "first_name": "student anme",
+        "last_name": "Teas Name",
+        "email": "ishara@test.com",
+        "password": "1234567Pkmn@",
+        "date_of_birth": "1999-09-17"
+    }
+]
+
+
+//Student edit --->
+[
+    {
+        "student_id" : "STD-00001",
+        "first_name": "new update",
+        "last_name": "Teas Name",
+        "email": "ishadfsra@test.com",
+        "date_of_birth": "2000-01-27"
+    }
+]
