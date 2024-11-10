@@ -76,6 +76,7 @@ exports.editStudent = asyncErroHandaler ( async (req,res,next)=>{
 
 
 
+
 //student activate
 exports.activeStudent = asyncErroHandaler( async (req,res,next)=>{
     

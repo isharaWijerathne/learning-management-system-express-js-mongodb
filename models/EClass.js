@@ -26,10 +26,6 @@ const eClassSchema = new mongoose.Schema({
         type : Boolean,
         default : true
     }
-    ,
-    token : {
-        type : String
-    }
 },{collection : 'student'});
 
 const EClass = mongoose.model("EClass",eClassSchema);
